@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1100</width><height>750</height></rect>
+  </property>
+  <property name="windowTitle"><string>ExpenseTracker Pro 2026</string></property>
+  <property name="styleSheet">
+   <string notr="true">
+    QMainWindow { 
+        background: qlineargradient(spread:pad, x1:0, y1:0, x2:0.8, y2:0.8, 
+                    stop:0 #1e293b, stop:0.5 #334155, stop:1 #1e293b); 
+    }
+    QToolBar {
+        background: rgba(255, 255, 255, 0.08);
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        spacing: 12px;
+    }
+    QToolButton {
+        background: #6366f1;
+        color: white;
+        border-radius: 12px;
+        padding: 8px 18px;
+        font-weight: 800;
+    }
+    #filterFrame { 
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px; 
+        margin: 15px;
+    }
+    QLabel { color: #f8fafc; font-weight: bold; text-transform: uppercase; }
+
+    QTableView { 
+        background-color: #1e293b;
+        alternate-background-color: #262f3f; /* Темний другий рядок */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px; 
+        color: #e2e8f0;
+        gridline-color: transparent;
+        selection-background-color: #6366f1;
+    }
+    QHeaderView::section { 
+        background-color: #334155;
+        color: #94a3b8;
+        padding: 12px;
+        border: none;
+    }
+    QDateEdit, QLineEdit {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: white;
+        padding: 5px;
+    }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="filterFrame">
+      <layout class="QHBoxLayout" name="filterLayout">
+       <item><widget class="QLabel" name="label"><property name="text"><string>📅 ПЕРІОД З:</string></property></widget></item>
+       <item><widget class="QDateEdit" name="dateFrom"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+       <item><widget class="QLabel" name="label_2"><property name="text"><string>ДО:</string></property></widget></item>
+       <item><widget class="QDateEdit" name="dateTo"><property name="calendarPopup"><bool>true</bool></property></widget></item>
+       <item><widget class="QLineEdit" name="editSearch"><property name="placeholderText"><string>🔍 Пошук...</string></property></widget></item>
+       <item><spacer name="horizontalSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+       <item>
+        <widget class="QPushButton" name="btnRefresh">
+         <property name="styleSheet"><string>background: #10b981; color: white; border-radius: 12px; font-weight: bold; padding: 10px 20px;</string></property>
+         <property name="text"><string>ОНОВИТИ</string></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation"><enum>Qt::Horizontal</enum></property>
+      <widget class="QTableView" name="tableView"><property name="showGrid"><bool>false</bool></property></widget>
+      <widget class="QChartView" name="chartView">
+       <property name="styleSheet"><string>background: rgba(30, 41, 59, 0.5); border-radius: 20px;</string></property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar"><addaction name="actionAdd"/><addaction name="actionDelete"/></widget>
+  <action name="actionAdd"><property name="text"><string>НОВИЙ ЗАПИС</string></property></action>
+  <action name="actionDelete"><property name="text"><string>ВИДАЛИТИ</string></property></action>
+ </widget>
+ <customwidgets>
+  <customwidget><class>QChartView</class><extends>QWidget</extends><header>qchartview.h</header></customwidget>
+ </customwidgets>
+</ui>
