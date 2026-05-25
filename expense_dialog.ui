@@ -3,20 +3,41 @@
  <class>ExpenseDialog</class>
  <widget class="QDialog" name="ExpenseDialog">
   <property name="geometry">
-   <rect><x>0</x><y>0</y><width>450</width><height>520</height></rect>
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>520</height>
+   </rect>
   </property>
-  <property name="windowTitle"><string>Додати витрату</string></property>
+  <property name="windowTitle">
+   <string>Додати витрату</string>
+  </property>
   <property name="styleSheet">
    <string notr="true">
-    QDialog { background-color: #ffffff; }
-    QLabel { color: #1e293b; font-weight: bold; font-size: 10pt; }
+    QDialog { 
+        background: qlineargradient(spread:pad, x1:0, y1:0, x2:0.8, y2:0.8, 
+                    stop:0 #1e293b, stop:0.5 #334155, stop:1 #1e293b);
+    }
+    
+    QLabel { 
+        color: #94a3b8; 
+        font-weight: bold; 
+        font-size: 10pt; 
+        text-transform: uppercase;
+    }
     
     QLineEdit, QComboBox, QDateEdit, QDoubleSpinBox {
-        border: 2px solid #f1f5f9;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 12px;
         padding: 12px;
-        background-color: #f8fafc;
-        color: #1e293b;
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+    }
+
+    QLineEdit:focus, QComboBox:focus, QDateEdit:focus, QDoubleSpinBox:focus {
+        border: 2px solid #6366f1;
+        background-color: rgba(255, 255, 255, 0.12);
     }
     
     QDoubleSpinBox {
@@ -26,61 +47,185 @@
         padding: 10px;
     }
 
+    QComboBox QAbstractItemView {
+        background-color: #1e293b;
+        color: #ffffff;
+        selection-background-color: #6366f1;
+        selection-color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     QPushButton#btnSave {
         background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #10b981, stop:1 #059669);
-        color: white; border-radius: 12px; padding: 15px; font-weight: bold;
+        color: white; 
+        border-radius: 12px; 
+        padding: 15px; 
+        font-weight: bold;
     }
+    QPushButton#btnSave:hover {
+        background: #059669;
+    }
+
     QPushButton#btnCancel {
-        background-color: #f1f5f9; color: #64748b; border-radius: 12px; padding: 15px; font-weight: bold;
+        background-color: rgba(255, 255, 255, 0.08); 
+        color: #e2e8f0; 
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px; 
+        padding: 15px; 
+        font-weight: bold;
+    }
+    QPushButton#btnCancel:hover {
+        background-color: rgba(255, 255, 255, 0.15);
     }
    </string>
   </property>
   <layout class="QVBoxLayout" name="main">
-   <property name="spacing"><number>20</number></property>
-   <property name="margin"><number>30</number></property>
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <property name="leftMargin">
+    <number>30</number>
+   </property>
+   <property name="topMargin">
+    <number>30</number>
+   </property>
+   <property name="rightMargin">
+    <number>30</number>
+   </property>
+   <property name="bottomMargin">
+    <number>30</number>
+   </property>
    <item>
     <widget class="QLabel" name="header">
-     <property name="text"><string>&lt;p align='center'&gt;&lt;span style='font-size:22pt; font-weight:800; color:#1e293b;'&gt;Нова витрата&lt;/span&gt;&lt;/p&gt;</string></property>
+     <property name="text">
+      <string>&lt;p align='center'&gt;&lt;span style='font-size:22pt; font-weight:800; color:#ffffff;'&gt;Нова витрата&lt;/span&gt;&lt;/p&gt;</string>
+     </property>
     </widget>
    </item>
    <item>
     <layout class="QFormLayout" name="form">
-     <property name="verticalSpacing"><number>18</number></property>
-     <item row="0" column="0"><widget class="QLabel" name="l1"><property name="text"><string>ДАТА</string></property></widget></item>
+     <property name="verticalSpacing">
+      <number>18</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="l1">
+       <property name="text">
+        <string>ДАТА</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <widget class="QDateEdit" name="dateEdit">
-       <property name="calendarPopup"><bool>true</bool></property>
-       <property name="displayFormat"><string>dd.MM.yyyy</string></property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="displayFormat">
+        <string>dd.MM.yyyy</string>
+       </property>
       </widget>
      </item>
-     <item row="1" column="0"><widget class="QLabel" name="l2"><property name="text"><string>КАТЕГОРІЯ</string></property></widget></item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="l2">
+       <property name="text">
+        <string>КАТЕГОРІЯ</string>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="1">
       <widget class="QComboBox" name="comboCategory">
-       <item><property name="text"><string>🍔 Харчування</string></property></item>
-       <item><property name="text"><string>🚕 Транспорт</string></property></item>
-       <item><property name="text"><string>🎬 Розваги</string></property></item>
-       <item><property name="text"><string>🏠 Житло</string></property></item>
-       <item><property name="text"><string>💊 Здоров'я</string></property></item>
+       <item>
+        <property name="text">
+         <string>🍔 Харчування</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>🚕 Транспорт</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>🎬 Розваги</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>🏠 Житло</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>💊 Здоров'я</string>
+        </property>
+       </item>
       </widget>
      </item>
-     <item row="2" column="0"><widget class="QLabel" name="l3"><property name="text"><string>СУМА (₴)</string></property></widget></item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="l3">
+       <property name="text">
+        <string>СУМА (₴)</string>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="1">
       <widget class="QDoubleSpinBox" name="editAmount">
-       <property name="buttonSymbols"><enum>QAbstractSpinBox::NoButtons</enum></property>
-       <property name="maximum"><double>999999.99</double></property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+       <property name="maximum">
+        <double>999999.99</double>
+       </property>
       </widget>
      </item>
-     <item row="3" column="0"><widget class="QLabel" name="l4"><property name="text"><string>ОПИС</string></property></widget></item>
-     <item row="3" column="1"><widget class="QLineEdit" name="editDesc"><property name="placeholderText"><string>На що витрачено...</string></property></widget></item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="l4">
+       <property name="text">
+        <string>ОПИС</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="editDesc">
+       <property name="placeholderText">
+        <string>На що витрачено...</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
-   <item><spacer name="s"><property name="orientation"><enum>Qt::Vertical</enum></property></spacer></item>
+   <item>
+    <spacer name="s">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item>
     <layout class="QHBoxLayout" name="btns">
-     <item><widget class="QPushButton" name="btnCancel"><property name="text"><string>СКАСУВАТИ</string></property></widget></item>
-     <item><widget class="QPushButton" name="btnSave"><property name="text"><string>ЗБЕРЕГТИ</string></property></widget></item>
+     <item>
+      <widget class="QPushButton" name="btnCancel">
+       <property name="text">
+        <string>СКАСУВАТИ</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSave">
+       <property name="text">
+        <string>ЗБЕРЕГТИ</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
+ <resources/>
+ <connections/>
 </ui>

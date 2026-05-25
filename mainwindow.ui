@@ -3,9 +3,16 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
-   <rect><x>0</x><y>0</y><width>1100</width><height>750</height></rect>
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>750</height>
+   </rect>
   </property>
-  <property name="windowTitle"><string>ExpenseTracker Pro 2026</string></property>
+  <property name="windowTitle">
+   <string>ExpenseTracker Pro 2026</string>
+  </property>
   <property name="styleSheet">
    <string notr="true">
     QMainWindow { 
@@ -36,7 +43,7 @@
 
     QTableView { 
         background-color: #1e293b;
-        alternate-background-color: #262f3f; /* Темний другий рядок */
+        alternate-background-color: #262f3f;
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px; 
         color: #e2e8f0;
@@ -60,19 +67,113 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>5</number>
+    </property>
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
     <item>
      <widget class="QFrame" name="filterFrame">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>75</height>
+       </size>
+      </property>
       <layout class="QHBoxLayout" name="filterLayout">
-       <item><widget class="QLabel" name="label"><property name="text"><string>📅 ПЕРІОД З:</string></property></widget></item>
-       <item><widget class="QDateEdit" name="dateFrom"><property name="calendarPopup"><bool>true</bool></property></widget></item>
-       <item><widget class="QLabel" name="label_2"><property name="text"><string>ДО:</string></property></widget></item>
-       <item><widget class="QDateEdit" name="dateTo"><property name="calendarPopup"><bool>true</bool></property></widget></item>
-       <item><widget class="QLineEdit" name="editSearch"><property name="placeholderText"><string>🔍 Пошук...</string></property></widget></item>
-       <item><spacer name="horizontalSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property></spacer></item>
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>📅 ПЕРІОД З:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateFrom">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>ДО:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateTo">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="editSearch">
+         <property name="minimumSize">
+          <size>
+           <width>180</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>🔍 Пошук...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QPushButton" name="btnRefresh">
-         <property name="styleSheet"><string>background: #10b981; color: white; border-radius: 12px; font-weight: bold; padding: 10px 20px;</string></property>
-         <property name="text"><string>ОНОВИТИ</string></property>
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: #10b981; color: white; border-radius: 12px; font-weight: bold; padding: 5px 15px;</string>
+         </property>
+         <property name="text">
+          <string>ОНОВИТИ</string>
+         </property>
         </widget>
        </item>
       </layout>
@@ -80,20 +181,57 @@
     </item>
     <item>
      <widget class="QSplitter" name="splitter">
-      <property name="orientation"><enum>Qt::Horizontal</enum></property>
-      <widget class="QTableView" name="tableView"><property name="showGrid"><bool>false</bool></property></widget>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QTableView" name="tableView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="showGrid">
+        <bool>false</bool>
+       </property>
+      </widget>
       <widget class="QChartView" name="chartView">
-       <property name="styleSheet"><string>background: rgba(30, 41, 59, 0.5); border-radius: 20px;</string></property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: rgba(30, 41, 59, 0.5); border-radius: 20px;</string>
+       </property>
       </widget>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QToolBar" name="mainToolBar"><addaction name="actionAdd"/><addaction name="actionDelete"/></widget>
-  <action name="actionAdd"><property name="text"><string>НОВИЙ ЗАПИС</string></property></action>
-  <action name="actionDelete"><property name="text"><string>ВИДАЛИТИ</string></property></action>
+  <widget class="QToolBar" name="mainToolBar">
+   <addaction name="actionAdd"/>
+   <addaction name="actionDelete"/>
+  </widget>
+  <action name="actionAdd">
+   <property name="text">
+    <string>НОВИЙ ЗАПИС</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="text">
+    <string>ВИДАЛИТИ</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
-  <customwidget><class>QChartView</class><extends>QWidget</extends><header>qchartview.h</header></customwidget>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>qchartview.h</header>
+  </customwidget>
  </customwidgets>
+ <resources/>
+ <connections/>
 </ui>

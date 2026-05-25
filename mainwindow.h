@@ -4,20 +4,20 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 
-// Правильний спосіб підключення Charts у Qt 6
+// Qt Charts
 #include <QtCharts/QChartView>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 #include <QtCharts/QChart>
 
-// Використовуємо макрос замість звичайного namespace
-QT_USE_NAMESPACE
-
-    QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class MainWindow;
+}
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
 
 public:
@@ -27,13 +27,16 @@ public:
 private slots:
     void onAddExpense();
     void onDeleteExpense();
+    void applyFilters();
     void updateStatistics();
-    void onSearchChanged(const QString &text); // Новий слот для пошуку
+    void syncDateRange();
 
 private:
     Ui::MainWindow *ui;
     QSqlTableModel *model;
+
     void setupModel();
+    void refreshCalendarHighlights();
 };
 
 #endif // MAINWINDOW_H
